@@ -22,5 +22,5 @@
             run: cat dragon.txt
         
           - name: Checkout Repo files
-            run: ls
+            run: ls -ltra
     
