@@ -1,0 +1,18 @@
+---
+name: Generate Acii workflow
+on:
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, ubuntu-20.04, windows-latest]
+        images: [hello-world, alpine]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: Echo Docker Details
+        run: docker info
+
+      - name: Run Images
+        run: docker run $

@@ -1,0 +1,22 @@
+---
+name: My first workflow
+on:
+  workflow_dispatch
+
+  env:
+    CONTAINER_REGISTRY: docker.io
+    IMAGE_NAME: github-actions-nginx
+
+jobs :
+  deploy:
+    needs: -docker
+    concurrency:
+    group: production-deployment
+    cancel-in-progress: false
+    runs-on: ubuntu-latest
+    steps:
+    - name: Docker Run
+      timeout-minutes: 10
+      run: |
+      echo docker run -d -p 8080:80 $CONTAINER_REGISTRY/${{ vars.DOCKER USERNAME }}/$IMAGE_NAME:latest
+      sleep 6000s
